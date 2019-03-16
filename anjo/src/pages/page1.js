@@ -22,6 +22,7 @@ const page1 = ({ navigation }) => (
     />
     </View>
     </View>
+    
 );
 
 // this.props.navigation.nagite('NomeDatela')
