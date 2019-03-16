@@ -19,6 +19,11 @@ const Page4 = () => (
 const styles = StyleSheet.create({
 
     container:{
+      flex: 1,//Tela Inteira 
+      backgroundColor: 'skyblue',
+      padding: 30,
+      color: 'blue',
+      justifyContent: 'flex-end'//
         
     }
 });

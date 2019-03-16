@@ -3,7 +3,7 @@
 import React from 'react';
 import { View, Button, Text , StyleSheet} from 'react-native';
 
-const Page5 = () => (
+const Page5 = ({ navigation }) => (
   <View style= {styles.container}>
     <Text>Alerta</Text>
   </View>
