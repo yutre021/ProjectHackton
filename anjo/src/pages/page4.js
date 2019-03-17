@@ -3,7 +3,7 @@
 import React from 'react';
 import { View, Button, Text , StyleSheet} from 'react-native';
 
-const Page4 = () => (
+const Page4 = ({ navigation }) => (
   <View style={styles.container}>
     <Text>Página 4</Text>
     <Button
@@ -12,6 +12,22 @@ const Page4 = () => (
     />
   </View>
 );
+const retrieveData = async () => {
+  try {
+      
+    
+      ToastAndroid.show(`login: }`, ToastAndroid.SHORT);
+      const nome1Input = await AsyncStorage.getItem('@N1');
+      const nome2Input = await AsyncStorage.getItem('@N2');
+      const tel1Input = await AsyncStorage.getItem('@T1');
+      const tel2Input = await AsyncStorage.getItem('@T2');
+     
+      <Text> O Nome do anjo é</Text>
+      
+  } catch (error) {
+      // Error retrieving data
+  }
+};
 
 // Page4.navigationOptions = {
 //   title: 'Info',

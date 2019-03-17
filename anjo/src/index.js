@@ -7,6 +7,7 @@ import Page4 from './pages/page4';
 import Page5 from './pages/page5';
 import Page7 from './pages/page7';
 
+
 import { createStackNavigator } from 'react-navigation';
 
 const StackNavigator = createStackNavigator({

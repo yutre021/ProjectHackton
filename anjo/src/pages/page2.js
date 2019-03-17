@@ -1,7 +1,7 @@
 // src/Page2.js
 
 import React from 'react';
-import { View, Button, Text, StyleSheet, TextInput, ScrollView} from 'react-native';
+import { View, Button, Text, StyleSheet, TextInput, ScrollView, AsyncStorage} from 'react-native';
 import {ToastAndroid} from 'react-native';
 
 var nomeInput = "";
@@ -11,6 +11,19 @@ var EndInput = "";
 var usuarioInput = "";
 var senha1Input = "";
 var senha2Input = "";
+
+const storeData = async () => {
+  try {
+    await AsyncStorage.setItem('@Login', usuarioInput);
+    await AsyncStorage.setItem('@Senha', senha1Input);
+    await AsyncStorage.setItem('@cpf', cpfInput);
+    await AsyncStorage.setItem('@nome', nomeInput);
+    await AsyncStorage.setItem('@dt', DTnascInput);
+    await AsyncStorage.setItem('@end', EndInput);
+  } catch (error) {
+    // Error saving data
+  }
+};
 
 
 const Page2 = ({ navigation }) => (
@@ -68,8 +81,8 @@ const Page2 = ({ navigation }) => (
           if(senha1Input==senha2Input && senha1Input != '' && senha2Input != '')
            {
             ToastAndroid.show( 'Dados preenchidos com sucesso!!!', ToastAndroid.SHORT);
-
-
+            storeData();
+            
             navigation.navigate('CadAnjos')
             
             
@@ -85,20 +98,6 @@ const Page2 = ({ navigation }) => (
   </View>
 
 );
-_storeData = async () => {
-  try {
-    await AsyncStorage.setItem('@Login', usuarioInput);
-  } catch (error) {
-    // Error saving data
-  }
-};
-_storeData = async () => {
-  try {
-    await AsyncStorage.setItem('@Senha', senha1Input);
-  } catch (error) {
-    // Error saving data
-  }
-};
 
 
 //Page2.navigationOptions = {

@@ -1,33 +1,30 @@
 // Srs page7
 import React from 'react';
-import { View, Button, Text, StyleSheet, TextInput } from 'react-native';
+import { View, Button, Text, StyleSheet, TextInput ,AsyncStorage} from 'react-native';
 import { ToastAndroid } from 'react-native';
+import SendSMS from 'react-native-sms-x';
 
-var telefoneInput
-var nomeInput
 
-/* var contato1 = { "nome": "Ensley" }
-var contato2 = { "nome": "Lucas" }
-var contato3 = { "nome": "Teste" }
-var contato4 = { "nome": "Renzo" }
-var contato5 = { "nome": "Gui" }
-contatos.push(contato1)
-contatos.push(contato2)
-contatos.push(contato3)
-contatos.push(contato4)
-contatos.push(contato5) */
+var nome1Input = "";
+var nome2Input = "";
+var tel1Input = "";
+var tel2Input = "";
 
-inicio = 0
+const storeData = async () => {
+    try {
+        await AsyncStorage.setItem('@N1', nome1Input);
+        await AsyncStorage.setItem('@N2', nome2Input);
+        await AsyncStorage.setItem('@T1', tel1Input);
+        await AsyncStorage.setItem('@T2', tel2Input);
 
-lista = []
-
-lista.push({ "nome": "Lucas" })
-lista.push({ "nome": "Fer" })
-
+    } catch (error) {
+        // Error saving data
+    }
+};
 const Page7 = ({ navigation }) => (
 
 
-    <View>
+    <View style={styles.container}>
         {/*   {contatos.map(function (contato) {
             return (
                 <Text style={{ fontSize: 20 }}>{contato.nome}</Text>
@@ -37,42 +34,67 @@ const Page7 = ({ navigation }) => (
 
         <View style={{ flexDirection: 'row' }}>
             <Text>
-                Nome
-            </Text>
-            <Text style={{ marginLeft: 40 }} >
-                Telefone
+                Dados dos Anjos:
             </Text>
         </View>
         <View style={{ flexDirection: 'row' }}>
-            {lista.map(function (item) {
-                return (
-        
-                        <View style={{ flexDirection: 'column'}}>
-                            <TextInput
-                                style={{ marginTop: 10, height: 40, borderColor: 'gray', borderWidth: 1 }}
-                                onChangeText={(text) => nomeInput = text}
-                                placeholder="Digite o nome do anjo: "
-                            />
-
-                            <TextInput
-                                style={{ marginTop: 10, height: 40, borderColor: 'gray', borderWidth: 1 }}
-                                onChangeText={(text) => telefoneInput = text}
-                                placeholder="Digite o telefone: "
-                            />
-
-                    </View>
-                )
-            })
 
 
-            }
+            <View style={{ flexDirection: 'column' }}>
+                <TextInput
+                    style={{ marginTop: 10, height: 40, borderColor: 'gray', borderWidth: 3 }}
+                    onChangeText={(text) => nome1Input = text}
+                    placeholder="Digite o nome do anjo: "
+                />
 
+                <TextInput
+                    style={{ marginTop: 10, height: 40, borderColor: 'gray', borderWidth: 3 }}
+                    onChangeText={(text) => tel1Input = text}
+                    placeholder="Digite o telefone: "
+                />
+
+                <TextInput
+                    style={{ marginTop: 10, height: 40, borderColor: 'gray', borderWidth: 3 }}
+                    onChangeText={(text) => nome2Input = text}
+                    placeholder="Digite o nome do anjo: "
+                />
+
+                <TextInput
+                    style={{ marginTop: 10, height: 40, borderColor: 'gray', borderWidth: 3 }}
+                    onChangeText={(text) => tel2Input = text}
+                    placeholder="Digite o telefone: "
+                />
+
+            </View>
         </View>
-
-
+        <View style={{ flex: 1, justifyContent: 'flex-end', marginBottom: 36 }}>
+            <Button
+                title="Cadastrar"
+                onPress={() => {
+                    storeData();
+                    navigation.navigate('Menu')
+                }} />
+        </View>
     </View>
 
 
 );
+
+const styles = StyleSheet.create({
+
+    container: {
+        flex: 1,//Tela Inteira 
+        backgroundColor: 'skyblue',
+        padding: 30,
+        color: 'blue',
+        justifyContent: 'flex-start',
+    },
+    alerta: {
+        width: 60,
+        height: 60,
+        backgroundColor: "gray",
+        borderRadius: 30
+    }
+});
 
 export default Page7;
