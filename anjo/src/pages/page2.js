@@ -1,7 +1,7 @@
 // src/Page2.js
 
 import React from 'react';
-import { View, Button, Text, StyleSheet, TextInput } from 'react-native';
+import { View, Button, Text, StyleSheet, TextInput, ScrollView} from 'react-native';
 import {ToastAndroid} from 'react-native';
 
 var nomeInput = "";
@@ -9,12 +9,14 @@ var cpfInput = "";
 var DTnascInput = "";
 var EndInput = "";
 var usuarioInput = "";
-var senha1 = "";
-var senha2 = "";
+var senha1Input = "";
+var senha2Input = "";
 
 
 const Page2 = ({ navigation }) => (
+  
   <View style={styles.container}>
+  <ScrollView>
     <Text>Dados da Usuária: </Text>
     <TextInput //Inserçao de texto
       style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
@@ -58,14 +60,14 @@ const Page2 = ({ navigation }) => (
           
           
 
-
+      </ScrollView>
     <View style={{ flex: 1, justifyContent: 'flex-end', marginBottom: 36 }}>
 
 
       <Button
         title="Cadastrar"
         onPress={() => { 
-          if(senha1Input==senha2Input)
+          if(senha1Input==senha2Input && senha1Input != '' && senha2Input != '')
            {
             ToastAndroid.show( 'Dados preenchidos com sucesso!!!', ToastAndroid.SHORT);
 

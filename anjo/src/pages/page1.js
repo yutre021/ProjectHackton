@@ -3,11 +3,25 @@ import React  from 'react';
 import { View, Button, Text, AppRegistry ,TextInput, StyleSheet, Platform } from 'react-native';
 
 const page1 = ({ navigation }) => (
-
     
+   
     <View style={styles.container}>
+    <Text style= {styles.editmenu}>Anjo</Text>
     <View>
-        <Text style= {styles.editmenu}>Anjo</Text>
+      <TextInput //Inserçao de texto
+      style={{ marginBottom: 10, height: 40, borderColor: 'gray', borderWidth: 1 }}
+      onChangeText={(text) => nomeInput = text}
+      placeholder="Login"
+      
+    />
+     <TextInput //Inserçao de texto
+      style={{ marginBottom: 40, height: 40, borderColor: 'gray', borderWidth: 1 }}
+      onChangeText={(text) => nomeInput = text}
+      placeholder="Senha"
+      
+    />
+    </View>
+    <View>
         <View style = {styles.botaoLogin}>
         <Button 
         

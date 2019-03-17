@@ -3,7 +3,7 @@
 import React from 'react';
 import { View, Button, Text , StyleSheet} from 'react-native';
 
-const Page3 = () => (
+const Page3 = ({ navigation }) => (
   <View style={styles.container}>
     <Text>Página 3 (Menu)</Text>
     <Button
