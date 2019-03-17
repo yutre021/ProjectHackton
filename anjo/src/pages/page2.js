@@ -57,8 +57,6 @@ const Page2 = ({ navigation }) => (
         placeholder = "Digite a senha novamente:"
         />
       
-          
-          
 
       </ScrollView>
     <View style={{ flex: 1, justifyContent: 'flex-end', marginBottom: 36 }}>
@@ -87,7 +85,20 @@ const Page2 = ({ navigation }) => (
   </View>
 
 );
-
+_storeData = async () => {
+  try {
+    await AsyncStorage.setItem('@Login', usuarioInput);
+  } catch (error) {
+    // Error saving data
+  }
+};
+_storeData = async () => {
+  try {
+    await AsyncStorage.setItem('@Senha', senha1Input);
+  } catch (error) {
+    // Error saving data
+  }
+};
 
 
 //Page2.navigationOptions = {
